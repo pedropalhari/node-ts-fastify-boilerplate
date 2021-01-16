@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "*/*.js": { "hen": "(basename).ts" },
+    "*/*.js.map": true
+  }
+}

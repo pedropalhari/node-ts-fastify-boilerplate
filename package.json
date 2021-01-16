@@ -1,0 +1,23 @@
+{
+  "name": "node-ts-fastify-boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --enable-source-maps dist/index.js",
+    "dev": "tsc -w",
+    "build": "tsc",
+    "gen:schema": "node dist/lib/utils/generateSchemasFromTS.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^3.10.1",
+    "fastify-cors": "^5.1.0",
+    "fastify-swagger": "3.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.21",
+    "@types/rimraf": "^3.0.0",
+    "rimraf": "^3.0.2",
+    "typescript-json-schema": "^0.47.0"
+  }
+}
