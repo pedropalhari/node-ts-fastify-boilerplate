@@ -17,7 +17,7 @@ I really hate boilerplates that throw a lot of stuff that you need to learn in, 
 
 ## Installing
 
-`npx degit pedropalhari/node-ts-fastify-boilerplate`
+`npx degit pedropalhari/node-ts-fastify-boilerplate project_name`
 
 ## Commands
 
