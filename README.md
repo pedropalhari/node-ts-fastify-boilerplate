@@ -64,7 +64,7 @@ const Routes = [
 
 ### Creating validation for this route!
 
-- Create a type in the `types/` folder. **The type must end in `IRoute!**
+- Create a type in the `types/` folder. **The type must end in `IRoute`!**
   - I'm using [typescript-json-schema](https://github.com/YousefED/typescript-json-schema), that is a little bit heavy on generating JSON schemas.
 
 ```ts
