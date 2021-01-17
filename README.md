@@ -57,7 +57,7 @@ export function initExampleRoutes(app: FastifyApp, service: {}) {
 const Routes = [
   {
     init: initExampleRoutes,
-    prefix: "/user",
+    prefix: "/example",
   },
 ];
 ```
@@ -74,7 +74,7 @@ export interface Example {
 }
 
 export interface ExampleBodyIRoute {
-  example: User;
+  example: Example;
 
   arr: string[];
 }
