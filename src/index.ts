@@ -24,7 +24,7 @@ async function main() {
   const Routes = [
     {
       init: initExampleRoutes,
-      prefix: "/user",
+      prefix: "/example",
     },
   ];
 

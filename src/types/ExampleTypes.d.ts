@@ -8,7 +8,7 @@ export interface Example {
 }
 
 export interface ExampleBodyIRoute {
-  example: User;
+  example: Example;
 
   arr: string[];
 }
