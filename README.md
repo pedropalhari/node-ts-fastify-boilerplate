@@ -12,7 +12,7 @@ I really hate boilerplates that throw a lot of stuff that you need to learn in, 
 
 - fastify 🚀
 - fastify-swagger 📚
-- **(NEW!)** Auto-documentation generated from typescript types! `generateSchemasFromTS.ts`
+- **(NEW!)** Auto-documentation generated from typescript types! `generateSchemasFromTS.ts` 🤯
   - `yarn gen:schema`
 
 ## Installing
