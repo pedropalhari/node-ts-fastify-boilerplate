@@ -51,6 +51,7 @@ export function initExampleRoutes(app: FastifyApp, service: {}) {
 - Add it to `index.ts` to the `Router` with the prefix you want.
 
 ```ts
+// index.ts
 /**
  * Route array with prefixes
  */
@@ -90,17 +91,17 @@ export interface ExampleBodyIRoute {
 ```ts
 // routes/Example.ts
 import { FastifyApp } from "../types/common";
-import { ExampleBodyIRoute } from "../types/ExampleTypes"; // Here!
-import ExampleBodySchema from "../schemas/ExampleBody.json"; // Here!
+import { ExampleBodyIRoute } from "../types/ExampleTypes"; // <-- Here!
+import ExampleBodySchema from "../schemas/ExampleBody.json"; // <-- Here!
 
 export function initExampleRoutes(app: FastifyApp, service: {}) {
   app.post<{
-    Body: ExampleBodyIRoute; // Here!
+    Body: ExampleBodyIRoute; // <-- Here!
   }>(
     "/route",
     {
       schema: {
-        body: ExampleBodySchema, // Here!
+        body: ExampleBodySchema, // <-- Here!
       },
     },
     async (req, res) => {
@@ -115,6 +116,76 @@ export function initExampleRoutes(app: FastifyApp, service: {}) {
 ```
 
 ### **Tã dã!**
+
+## Useful `services`
+
+### MongoDB
+
+```ts
+// services/Mongo.ts
+import { Collection, MongoClient } from "mongodb";
+
+// Connection URL
+const URL = "mongodb://localhost:27017";
+
+// Database Name
+const dbName = "myproject";
+
+interface User {
+  username: string;
+  password: string;
+}
+
+interface Email {
+  recipient: string;
+  delay: number;
+}
+
+export interface DBCollections {
+  user: Collection<User>;
+  emails: Collection<Email>;
+}
+
+export async function initMongoDB(): Promise<DBCollections> {
+  // Create a new MongoClient
+  const client = new MongoClient(URL);
+  await client.connect();
+  const db = client.db(dbName);
+
+  return {
+    user: db.collection("user"),
+    emails: db.collection("email"),
+  };
+}
+```
+
+Then on `index.ts` and the `routes/*.ts`
+
+```ts
+//index.ts
+async function main() {
+  initDocumentation(app, API_VERSION);
+  let db = await initMongoDB(); // <-- Here!
+
+  //...
+  // Initialize all the routes in the array, passing the db for
+  // operations and the app for creating handlers
+  Routes.forEach((route) => {
+    app.register((app, opts, done) => {
+      route.init(app, { db }); // <-- Here!
+      //...
+    });
+  });
+}
+
+// routes/*.ts
+export function initExampleRoutes(
+  app: FastifyApp,
+  service: { db: DBCollections }
+) {
+  //...
+}
+```
 
 ## Credits
 
