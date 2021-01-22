@@ -94,7 +94,7 @@ import { FastifyApp } from "../types/common";
 import { ExampleBodyIRoute } from "../types/ExampleTypes"; // <-- Here!
 import ExampleBodySchema from "../schemas/ExampleBody.json"; // <-- Here!
 
-export function initExampleRoutes(app: FastifyApp, service: {}) {
+export function initExampleRoutes(app: FastifyApp, {}: Services) {
   app.post<{
     Body: ExampleBodyIRoute; // <-- Here!
   }>(
@@ -184,9 +184,9 @@ async function main() {
 }
 
 // routes/*.ts
-export function initExampleRoutes(app: FastifyApp, services: Services) {
+export function initExampleRoutes(app: FastifyApp, { db }: Services) {
   //...
-  let queryResult = await service.db.user.findOne({});
+  let queryResult = await db.user.findOne({});
 }
 ```
 
