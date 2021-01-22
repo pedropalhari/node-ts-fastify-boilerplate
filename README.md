@@ -55,7 +55,7 @@ export function initExampleRoutes(app: FastifyApp, service: {}) {
 /**
  * Route array with prefixes
  */
-const Routes = [
+const Routes: Route[] = [
   {
     init: initExampleRoutes,
     prefix: "/example",
@@ -159,9 +159,14 @@ export async function initMongoDB(): Promise<DBCollections> {
 }
 ```
 
-Then on `index.ts` and the `routes/*.ts`
+Then on `types/common.d.ts`, `index.ts` and the `routes/*.ts`
 
 ```ts
+//types/common.d.ts
+export interface Services {
+  db: DBCollections;
+}
+
 //index.ts
 async function main() {
   initDocumentation(app, API_VERSION);
@@ -179,11 +184,9 @@ async function main() {
 }
 
 // routes/*.ts
-export function initExampleRoutes(
-  app: FastifyApp,
-  service: { db: DBCollections }
-) {
+export function initExampleRoutes(app: FastifyApp, services: Services) {
   //...
+  let queryResult = await service.db.user.findOne({});
 }
 ```
 

@@ -1,8 +1,8 @@
-import { FastifyApp } from "../types/common";
+import { FastifyApp, Services } from "../types/common";
 import { ExampleBodyIRoute } from "../types/ExampleTypes";
 import ExampleBodySchema from "../schemas/ExampleBody.json";
 
-export function initExampleRoutes(app: FastifyApp, service: {}) {
+export function initExampleRoutes(app: FastifyApp, services: Services) {
   app.post<{
     //Querystring: LoginRoute
     //Headers: LoginRoute

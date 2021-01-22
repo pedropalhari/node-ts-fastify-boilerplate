@@ -2,6 +2,7 @@ import fastify from "fastify";
 import { initExampleRoutes } from "./routes/Example";
 import { initDocumentation } from "./services/Documentation";
 import fastifyCors from "fastify-cors";
+import { Route } from "./types/common";
 
 /**
  * Main server:
@@ -21,7 +22,7 @@ async function main() {
   /**
    * Route array with prefixes
    */
-  const Routes = [
+  const Routes: Route[] = [
     {
       init: initExampleRoutes,
       prefix: "/example",
