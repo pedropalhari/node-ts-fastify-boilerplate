@@ -15,7 +15,7 @@ export function initDocumentation(app: FastifyApp, version: string) {
         version,
       },
       // host: "localhost",
-      schemes: ["http"],
+      schemes: ["http", "https"],
       consumes: ["application/json"],
       produces: ["application/json"],
       /**
