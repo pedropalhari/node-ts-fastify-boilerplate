@@ -16,4 +16,7 @@ export interface Route {
   prefix: string;
 }
 
-export interface Services {}
+export interface Services {
+  // Something as:
+  // db: ReturnType<typeof initMongoDB>;
+}
