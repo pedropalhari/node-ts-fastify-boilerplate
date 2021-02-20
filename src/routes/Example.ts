@@ -1,6 +1,6 @@
 import { FastifyApp, Services } from "../types/common";
 import { ExampleBodyIRoute } from "../types/ExampleTypes";
-import ExampleBodySchema from "../schemas/ExampleBody.json";
+import { ExampleBodySchema } from "../schemas/GeneratedSchemas";
 
 export function initExampleRoutes(app: FastifyApp, {}: Services) {
   app.post<{

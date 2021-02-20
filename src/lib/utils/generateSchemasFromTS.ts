@@ -39,6 +39,7 @@ const BASE_PATH = "./src/types";
   // Temporary folder for schemas
   await fs.mkdir("./src/schemas_temp");
 
+  let schemaNames: string[] = [];
   // Generate all the schemas
   await Promise.all(
     symbolsFiltered.map(async (s) => {
@@ -48,11 +49,21 @@ const BASE_PATH = "./src/types";
 
       console.log(`Generated ${schemaName}.json`);
 
+      schemaNames.push(schemaName);
       await fs.writeFile(
         `./src/schemas_temp/${schemaName}.json`,
         JSON.stringify(schema)
       );
     })
+  );
+
+  console.log("Generated schemas import map");
+  // At last, generate an index that exports all schemas so it's imported from a Schemas.{SchemaName} manner
+  await fs.writeFile(
+    `./src/schemas_temp/GeneratedSchemas.ts`,
+    schemaNames
+      .map((s) => `import ${s}Schema from "./${s}.json"\n` + `export { ${s}Schema }\n`)
+      .join("\n")
   );
 
   /**

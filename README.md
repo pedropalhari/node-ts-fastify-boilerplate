@@ -85,6 +85,7 @@ export interface ExampleBodyIRoute {
 
   - For each `IRoute` type it will create a `.json` file on `schemas/`
   - It also compiles all schemas into `schemas/definitions.json` so we can use any types from the project, not any from the `types/` folder.
+  - And for the last part it adds a nice import map so you can do `{type}Schema` and autocomplete.
 
 - Add the type and generated schema to the route:
 
@@ -92,7 +93,7 @@ export interface ExampleBodyIRoute {
 // routes/Example.ts
 import { FastifyApp } from "../types/common";
 import { ExampleBodyIRoute } from "../types/ExampleTypes"; // <-- Here!
-import ExampleBodySchema from "../schemas/ExampleBody.json"; // <-- Here!
+import { ExampleBodySchema } from "../schemas/GeneratedSchemas";
 
 export function initExampleRoutes(app: FastifyApp, {}: Services) {
   app.post<{
