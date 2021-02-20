@@ -16,4 +16,11 @@ export interface Route {
   prefix: string;
 }
 
-export interface Services {}
+// Handy interface for Services that return a Promise
+export type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T;
+
+export interface Services {
+  // Something as:
+  // db: ReturnType<typeof initMongoDB>;
+  // db: Awaited<ReturnType<typeof initMongoDB>>;
+}
