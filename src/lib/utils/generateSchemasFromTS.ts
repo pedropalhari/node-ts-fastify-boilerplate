@@ -23,6 +23,7 @@ const BASE_PATH = "./src/types";
     {
       resolveJsonModule: true,
       esModuleInterop: true,
+      lib: ["ES2020"],
     }
   );
 
@@ -46,6 +47,8 @@ const BASE_PATH = "./src/types";
       let schema = TJSGenerator.getSchemaForSymbol(s);
 
       let schemaName = s.replace("IRoute", "");
+      
+      if (["e.", ""].includes(schemaName)) return;
 
       console.log(`Generated ${schemaName}.json`);
 
