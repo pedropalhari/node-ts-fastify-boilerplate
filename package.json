@@ -6,7 +6,7 @@
     "start": "node --enable-source-maps dist/index.js",
     "dev": "tsc -w",
     "build": "tsc",
-    "gen:schema": "npx ts-node-transpile-only dist/lib/utils/generateSchemasFromTS.js"
+    "gen:schema": "yarn ts-node-transpile-only src/lib/utils/generateSchemasFromTS.ts"
   },
   "license": "MIT",
   "dependencies": {
@@ -18,7 +18,7 @@
     "@types/node": "^14.14.21",
     "@types/rimraf": "^3.0.0",
     "rimraf": "^3.0.2",
-    "typescript-json-schema": "^0.47.0",
+    "typescript-json-schema": "^0.50.1",
     "ts-node": "^10.0.0"
   }
 }
