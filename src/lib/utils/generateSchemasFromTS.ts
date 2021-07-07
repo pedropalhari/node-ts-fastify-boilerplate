@@ -24,6 +24,7 @@ const BASE_PATH = "./src/types";
       resolveJsonModule: true,
       esModuleInterop: true,
       lib: ["ES2020"],
+      target: "ES2020",
     }
   );
 
